@@ -1,0 +1,8 @@
+group: io.kestra.plugin.trivy
+name: "trivy"
+title: "Trivy"
+description: "Plugin Trivy for Kestra"
+body: ""
+videos: []
+createdBy: "Kestra Core Team"
+managedBy: "Kestra Core Team"
