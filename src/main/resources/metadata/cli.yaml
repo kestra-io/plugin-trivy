@@ -1,8 +1,8 @@
 group: io.kestra.plugin.trivy.cli
 name: "cli"
 title: "Trivy"
-description: ""
-body: ""
+description: "Tasks that execute arbitrary Trivy CLI commands."
+body: "Set the Trivy `commands` to run (image, filesystem, or config scans), optionally override the Trivy container image or target OS, and capture the CLI output files for vulnerability reporting in your workflows."
 videos: []
 createdBy: "Kestra Core Team"
 managedBy: "Kestra Core Team"
