@@ -1,8 +1,8 @@
 group: io.kestra.plugin.trivy
 name: "trivy"
 title: "Trivy"
-description: "Plugin Trivy for Kestra"
-body: ""
+description: "Tasks that run Trivy security scans through the CLI."
+body: "Execute Trivy commands against container images, filesystems, or IaC using configurable container images and capture the scan output for reporting or gating deployments."
 videos: []
 createdBy: "Kestra Core Team"
 managedBy: "Kestra Core Team"
