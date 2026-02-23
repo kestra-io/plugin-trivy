@@ -21,7 +21,8 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Schema(
-    title = "Run Trivy CLI commands."
+    title = "Execute Trivy CLI commands in Docker",
+    description = "Runs the provided Trivy CLI commands via the script runner. Defaults to Docker image `aquasec/trivy:latest` when no image override is set; ensure credentials and volume mounts needed by Trivy are available in the container."
 )
 @Plugin(
     examples = {
@@ -62,7 +63,8 @@ public class TrivyCLI extends AbstractExecScript implements RunnableTask<ScriptO
     protected Property<String> containerImage = Property.ofValue(DEFAULT_IMAGE);
 
     @Schema(
-        title = "Trivy CLI commands to execute."
+        title = "Trivy CLI commands to execute",
+        description = "Commands are executed in order by the task runner; provide full Trivy subcommands such as `trivy image ...` or `trivy config ...`."
     )
     @NotNull
     protected Property<List<String>> commands;
