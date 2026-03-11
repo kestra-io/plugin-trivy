@@ -1,4 +1,5 @@
-@PluginSubGroup(title = "Trivy",categories = { PluginSubGroup.PluginCategory.DATA, PluginSubGroup.PluginCategory.INFRASTRUCTURE }
+@PluginSubGroup(
+    title = "Trivy", categories = { PluginSubGroup.PluginCategory.DATA, PluginSubGroup.PluginCategory.INFRASTRUCTURE }
 )
 package io.kestra.plugin.trivy.cli;
 

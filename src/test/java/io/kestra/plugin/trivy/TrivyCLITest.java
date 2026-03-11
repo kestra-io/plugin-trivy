@@ -1,6 +1,12 @@
 package io.kestra.plugin.trivy;
 
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+import org.junit.jupiter.api.Test;
+
 import com.google.common.collect.ImmutableMap;
+
 import io.kestra.core.junit.annotations.KestraTest;
 import io.kestra.core.models.executions.LogEntry;
 import io.kestra.core.models.property.Property;
@@ -9,16 +15,12 @@ import io.kestra.core.queues.QueueInterface;
 import io.kestra.core.runners.RunContext;
 import io.kestra.core.runners.RunContextFactory;
 import io.kestra.core.utils.TestsUtils;
-import io.kestra.plugin.trivy.cli.TrivyCLI;
 import io.kestra.plugin.scripts.exec.scripts.models.ScriptOutput;
+import io.kestra.plugin.trivy.cli.TrivyCLI;
+
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -40,9 +42,13 @@ public class TrivyCLITest {
         var trivyTask = TrivyCLI.builder()
             .id(TrivyCLI.class.getSimpleName())
             .type(TrivyCLI.class.getName())
-            .commands(Property.ofValue(List.of(
-                "trivy image --format table alpine:3.18"
-            )))
+            .commands(
+                Property.ofValue(
+                    List.of(
+                        "trivy image --format table alpine:3.18"
+                    )
+                )
+            )
             .build();
 
         RunContext runContext = TestsUtils.mockRunContext(runContextFactory, trivyTask, ImmutableMap.of());
