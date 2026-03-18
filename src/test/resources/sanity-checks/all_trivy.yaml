@@ -1,0 +1,21 @@
+id: all_trivy
+namespace: sanitychecks.plugin-trivy
+
+tasks:
+  - id: trivy_scan
+    type: io.kestra.plugin.trivy.cli.TrivyCLI
+    outputFiles:
+      - report.txt
+    commands:
+      - trivy image --format table alpine:3.18 > report.txt
+
+  - id: assert
+    type: io.kestra.plugin.core.execution.Assert
+    conditions:
+      - "{{ outputs.trivy_scan.exitCode == 0 }}"
+      - "{{ outputs.trivy_scan.outputFiles['report.txt'] is not null }}"
+      - "{{ read(outputs.trivy_scan.outputFiles['report.txt']) contains 'alpine:3.18' }}"
+
+finally:
+  - id: purge
+    type: io.kestra.plugin.core.storage.PurgeCurrentExecutionFiles
