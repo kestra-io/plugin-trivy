@@ -58,7 +58,7 @@ import lombok.experimental.SuperBuilder;
     }
 )
 public class TrivyCLI extends AbstractExecScript implements RunnableTask<ScriptOutput> {
-    private static final String DEFAULT_IMAGE = "aquasec/trivy:canary";
+    private static final String DEFAULT_IMAGE = "aquasec/trivy";
 
     @Builder.Default
     protected Property<String> containerImage = Property.ofValue(DEFAULT_IMAGE);
