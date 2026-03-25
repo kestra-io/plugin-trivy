@@ -23,7 +23,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @Schema(
     title = "Execute Trivy CLI commands in Docker",
-    description = "Runs the provided Trivy CLI commands via the script runner. Defaults to Docker image `aquasec/trivy:canary` when no image override is set; ensure credentials and volume mounts needed by Trivy are available in the container."
+    description = "Runs the provided Trivy CLI commands via the script runner. Defaults to Docker image `ghcr.io/aquasecurity/trivy` when no image override is set; ensure credentials and volume mounts needed by Trivy are available in the container."
 )
 @Plugin(
     examples = {
