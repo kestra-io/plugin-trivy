@@ -17,6 +17,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import io.kestra.core.models.annotations.PluginProperty;
 
 @SuperBuilder
 @Getter
@@ -61,6 +62,7 @@ public class TrivyCLI extends AbstractExecScript implements RunnableTask<ScriptO
     private static final String DEFAULT_IMAGE = "ghcr.io/aquasecurity/trivy";
 
     @Builder.Default
+    @PluginProperty(group = "execution")
     protected Property<String> containerImage = Property.ofValue(DEFAULT_IMAGE);
 
     @Schema(
@@ -68,6 +70,7 @@ public class TrivyCLI extends AbstractExecScript implements RunnableTask<ScriptO
         description = "Commands are executed in order by the task runner; provide full Trivy subcommands such as `trivy image ...` or `trivy config ...`."
     )
     @NotNull
+    @PluginProperty(group = "main")
     protected Property<List<String>> commands;
 
     @Override
