@@ -85,7 +85,7 @@ public class TrivyCLI extends AbstractExecScript implements RunnableTask<ScriptO
     @Override
     public ScriptOutput run(RunContext runContext) throws Exception {
         TargetOS os = runContext.render(this.targetOS).as(TargetOS.class).orElse(null);
-        runContext.flowInfo().tenantId()
+
         return this.commands(runContext)
             .withInterpreter(this.interpreter)
             .withBeforeCommands(beforeCommands)
